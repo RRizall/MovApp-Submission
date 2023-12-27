@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
+    id 'com.google.devtools.ksp'
 }
 
 android {
@@ -71,7 +72,7 @@ dependencies {
 
     implementation 'androidx.room:room-ktx:2.4.3'
     implementation 'androidx.room:room-runtime:2.4.3'
-    kapt 'androidx.room:room-compiler:2.4.3'
+    ksp 'androidx.room:room-compiler:2.4.3'
     androidTestImplementation 'androidx.room:room-testing:2.4.3'
 
     implementation 'io.insert-koin:koin-core:3.2.2'
