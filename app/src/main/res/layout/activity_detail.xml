@@ -20,7 +20,7 @@
         android:id="@+id/btn_favorite"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_margin="10dp"
+        android:layout_margin="16dp"
         android:background="@drawable/icon_favorite_border"
         android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
