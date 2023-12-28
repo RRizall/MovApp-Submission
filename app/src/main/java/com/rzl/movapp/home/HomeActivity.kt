@@ -1,13 +1,18 @@
 package com.rzl.movapp.home
 
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
+import com.rzl.movapp.R
 import com.rzl.movapp.core.data.Resource
 import com.rzl.movapp.core.ui.PopularAdapter
 import com.rzl.movapp.databinding.ActivityHomeBinding
@@ -20,6 +25,8 @@ class HomeActivity : AppCompatActivity() {
     private val homeViewModel : HomeViewModel by viewModel()
 
     private val popularAdapter = PopularAdapter()
+
+    private lateinit var broadcastReceiver : BroadcastReceiver
 
 
 
@@ -75,5 +82,40 @@ class HomeActivity : AppCompatActivity() {
             adapter = popularAdapter
         }
 
+    }
+
+
+
+    private fun registerBroadCastReceiver(){
+        broadcastReceiver = object : BroadcastReceiver(){
+            override fun onReceive(context: Context?, intent: Intent?) {
+                when(intent!!.action){
+                    Intent.ACTION_POWER_CONNECTED -> {
+                        Toast.makeText(this@HomeActivity, R.string.power_connected, Toast.LENGTH_SHORT).show()
+                    }
+                    Intent.ACTION_POWER_DISCONNECTED ->{
+                        Toast.makeText(this@HomeActivity, R.string.power_disconnected, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+
+        val intentFilter = IntentFilter()
+        intentFilter.apply {
+            addAction(Intent.ACTION_POWER_CONNECTED)
+            addAction(Intent.ACTION_POWER_DISCONNECTED)
+        }
+
+        registerReceiver(broadcastReceiver, intentFilter)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        registerBroadCastReceiver()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        unregisterReceiver(broadcastReceiver)
     }
 }

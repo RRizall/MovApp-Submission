@@ -12,4 +12,6 @@
     <string name="welcome_to_mov">Welcome to MOV</string>
     <string name="watch_everything_you_want_nfor_free">Watch everything you want\nfor free!</string>
     <string name="enter_now">Enter now</string>
+    <string name="power_connected">Power connected!</string>
+    <string name="power_disconnected">Power disconnected!</string>
 </resources>
