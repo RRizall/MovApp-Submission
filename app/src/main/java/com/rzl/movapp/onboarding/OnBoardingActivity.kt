@@ -10,10 +10,11 @@ import com.rzl.movapp.home.HomeActivity
 
 class OnBoardingActivity : AppCompatActivity() {
     private lateinit var binding : ActivityOnBoardingBinding
+    private val delay = 3000
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Thread.sleep(3000)
+        Thread.sleep(delay.toLong())
         installSplashScreen()
 
         binding = ActivityOnBoardingBinding.inflate(layoutInflater)

@@ -3,4 +3,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_favorite">Favorite</string>
+    <string name="backdroip_image">backdroip image</string>
+    <string name="title">Aquament</string>
+    <string name="tv_release_date">12/1/2023</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="button_menu_favorite">Button Menu Favorite</string>
+    <string name="image_onboarding">image onboarding</string>
+    <string name="welcome_to_mov">Welcome to MOV</string>
+    <string name="watch_everything_you_want_nfor_free">Watch everything you want\nfor free!</string>
+    <string name="enter_now">Enter now</string>
 </resources>

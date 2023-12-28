@@ -1,6 +1,5 @@
 package com.rzl.movapp.core.data.source.local
 
-import androidx.lifecycle.LiveData
 import com.rzl.movapp.core.data.source.local.entity.PopularEntity
 import com.rzl.movapp.core.data.source.local.room.PopulerDao
 import kotlinx.coroutines.flow.Flow

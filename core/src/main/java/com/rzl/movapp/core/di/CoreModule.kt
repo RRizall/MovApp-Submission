@@ -1,6 +1,5 @@
 package com.rzl.movapp.core.di
 
-import android.content.Context
 import android.util.Log
 import androidx.room.Room
 import com.rzl.movapp.core.data.AppRepository
@@ -10,7 +9,6 @@ import com.rzl.movapp.core.data.source.remote.RemoteDataSource
 import com.rzl.movapp.core.data.source.remote.network.ApiService
 import com.rzl.movapp.core.domain.repository.IPopularRepository
 import com.rzl.movapp.core.utils.AppExecutors
-import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -74,7 +72,7 @@ class AuthenticationInterceptor(private val apiKey: String) : Interceptor {
             .addQueryParameter("api_key", apiKey)
             .build()
 
-        Log.d("API_LOG", "URL with API Key: ${urlWithApiKey.toString()}")
+        Log.d("API_LOG", "URL with API Key: $urlWithApiKey")
 
         val requestBuilder = originalRequest.newBuilder().url(urlWithApiKey)
         val request = requestBuilder.build()

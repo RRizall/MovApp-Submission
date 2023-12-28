@@ -13,6 +13,7 @@
         android:id="@+id/img_now_playing"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:contentDescription="@string/image_onboarding"
         android:layout_centerHorizontal="true"
         android:src="@drawable/now_playing"
         android:layout_marginTop="50dp"/>
@@ -20,7 +21,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to MOV"
+        android:text="@string/welcome_to_mov"
         android:layout_below="@id/img_now_playing"
         android:textColor="@color/black"
         android:textSize="24sp"
@@ -34,7 +35,7 @@
         android:layout_marginTop="24sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Watch everything you want\nfor free!"
+        android:text="@string/watch_everything_you_want_nfor_free"
         android:layout_below="@id/txt_welcome"
         android:textColor="@color/black"
         android:layout_centerHorizontal="true"
@@ -45,7 +46,7 @@
     <Button
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Enter now"
+        android:text="@string/enter_now"
         android:layout_centerHorizontal="true"
         android:textAllCaps="false"
         android:gravity="center"
