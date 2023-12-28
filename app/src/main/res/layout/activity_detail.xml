@@ -22,6 +22,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_margin="16dp"
+        android:contentDescription="@string/button_favorite"
         android:background="@drawable/icon_favorite_border"
         android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"

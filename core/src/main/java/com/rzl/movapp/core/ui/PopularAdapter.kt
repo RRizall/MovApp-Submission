@@ -1,6 +1,7 @@
 package com.rzl.movapp.core.ui
 
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rzl.movapp.core.databinding.ItemHomeBinding
 import com.rzl.movapp.core.domain.model.Popular
 import java.io.InputStream
+import java.lang.ref.WeakReference
 import java.net.HttpURLConnection
 import java.net.URL
 
@@ -20,6 +22,7 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder>() {
     var onItemClick: ((Popular) -> Unit)? = null
 
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setAllPopularList(popularResponse: List<Popular>?) {
         if (popularResponse != null) {
             popularList.clear()
@@ -65,8 +68,11 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int = popularList.size
 
-    private class LoadImageTask(private val imageView: ImageView) :
+    private class LoadImageTask(imageView: ImageView) :
         AsyncTask<String?, Void?, Bitmap?>() {
+
+        private val imageViewRef: WeakReference<ImageView> = WeakReference(imageView)
+
         override fun doInBackground(vararg params: String?): Bitmap? {
             try {
                 val url = URL(params[0])
@@ -82,11 +88,14 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder>() {
         }
 
         override fun onPostExecute(result: Bitmap?) {
-            if (result != null) {
-                imageView.setImageBitmap(result)
+            imageViewRef.get()?.let { imageView ->
+                if (result != null) {
+                    imageView.setImageBitmap(result)
+                }
             }
         }
     }
+
 }
 
 

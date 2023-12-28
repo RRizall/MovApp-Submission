@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="@color/white"
-    tools:context=".onboarding.OnBoardingActivity">
+    tools:context=".onboarding.OnBoardingActivity"
+    tools:ignore="Overdraw">
 
     <ImageView
         android:id="@+id/img_now_playing"
