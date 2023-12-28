@@ -9,6 +9,8 @@ import com.rzl.movapp.core.data.source.remote.RemoteDataSource
 import com.rzl.movapp.core.data.source.remote.network.ApiService
 import com.rzl.movapp.core.domain.repository.IPopularRepository
 import com.rzl.movapp.core.utils.AppExecutors
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -21,10 +23,14 @@ import java.util.concurrent.TimeUnit
 val databaseModule = module {
     factory { get<PopularDatabase>().populerDao() }
     single {
+        val passphrase: ByteArray =  SQLiteDatabase.getBytes("rizal".toCharArray())
+        val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
-            PopularDatabase::class.java,"popular_db"
-        ).fallbackToDestructiveMigration().build()
+            PopularDatabase::class.java,"Popular.db"
+        ).fallbackToDestructiveMigration()
+            .openHelperFactory(factory)
+            .build()
     }
 }
 
